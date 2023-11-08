@@ -1,11 +1,14 @@
 using GameFinder.Data;
+using GameFinder.Services.Console;
 using GameFinder.Services.Game;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IConsoleService, ConsoleService>();
 
+builder.Services.AddHttpContextAccessor();
 // Add connection string and DbContext setup
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));

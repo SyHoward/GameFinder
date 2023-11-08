@@ -1,3 +1,4 @@
+using GameFinder.Services.Console;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameFinder.WebApi.Controllers
@@ -6,5 +7,10 @@ namespace GameFinder.WebApi.Controllers
     [ApiController]
     public class ConsoleController : ControllerBase
     {
+        private readonly IConsoleService _consoleService;
+        public ConsoleController(IConsoleService consoleService)
+        {
+            _consoleService = consoleService;
+        }
     }
 }
